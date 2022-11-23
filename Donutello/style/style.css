@@ -89,6 +89,13 @@ h1 {
     height: 520px;
     padding: 3em;
 }
+.donut img {
+    width: 100%;
+    position: relative;
+    top: 50px;
+    border-radius: 20px;
+
+}
 .paragraph {
 
 background-color: #E72870;
@@ -128,13 +135,14 @@ button {
     padding: 16px 24px;
     font-family: 'Dosis', sans-serif;
     background-color: #F7E200;
+    border-radius: 50px;
    
 }
 button a {
     color: #E72870;
     text-decoration: none;
     font-size: 19px;
-    font-weight: 550;
+    font-weight: 900;
 
 
 
