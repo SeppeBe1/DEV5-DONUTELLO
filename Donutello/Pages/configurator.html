@@ -11,48 +11,50 @@
 
     <header>
         <nav>
-            <a id="logo" href="index.html"><img src="../assets/donuttello-logo.png" alt="Logo van Donutello met een roze achtergrond en gele letters"></a>
+            <a class="logo" href="index.html"><img src="../assets/donuttello-logo.png" alt="Logo van Donutello met een roze achtergrond en gele letters"></a>
             <a class="active" href="../index.html">HOME</a>
             <a href="#">CONFIGURATOR</a>
             <a href="gallery.html">GALLERIJ</a>
         </nav>
       </header>
-      <main></main>
 
-    <!-- <div class="configurator">
+      <div class="configContainer">
+    <div class="configurator">
         <div class="topping">
-            <span> left </span>
+            <span class="arrow left"></span>
             <span> Chose topping </span>
-            <span> right </span>
+            <span class="arrow right"></span>
         </div>
         <div class="glaze">
-            <span> left </span>
+            <span class="arrow left"></span>
             <span> Chose glaze </span>
-            <span> right </span>
+            <span class="arrow right"></span>
         </div>
         <div class="dough">
-            <span> left </span>
+            <span class="arrow left"></span>
             <span> Chose dough </span>
-            <span> right </span>
+            <span class="arrow right"></span>
         </div>
 
-            <form class="btnUploadLogo" action="/action_page.php">
-                <label for="img">Select logo:</label>
-                <input type="file" id="img" name="img" accept="image/">
-            </form>
+        <div class="btnUploadLogo">
+            <label for="img">Upload logo</label>
+            <input class="hidden" type="file" id="img" name="img" accept="image/">
+        </div>
 
-            <button>
+            <button class="btnCreate">
                 <span>Create donut</span>
             </button>
 
-            <button>
+            <button class="btnShare">
                 <span>Share donut</span>
             </button>
     </div>
 
     <div class="configDonut">
         <span>DONUT</span>
-    </div> -->
+    </div>
+
+</div>
 
 
     <script type="module" src="/main.js"></script>
