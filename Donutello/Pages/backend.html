@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <title>Document</title>
+</head>
+<body>
+        <h1>Vue Demo #1</h1>
+        <div id="vapp">
+            <p>Hello World: {{ author }}</p>
+            <p>Hello World: {{ donut }}</p>
+        </div>
+
+        <div>
+            <div class="donutData">
+            <img class="donut" :src="image" :alt="altDonut">
+            <span>{{ titel }}</span>
+            <span>{{ author }}</span>
+            <span>{{ date }}</span>
+            <span>Aantal: {{ amount }}</span>
+        </div>
+            
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <span>Topping: {{ topping }}</span>
+                <span>Glaze: {{ glaze }}</span>
+                <span>Dough: {{ dough }}</span>
+                <span>Filling: {{ filling }}</span> 
+            </div>
+
+            <div class="btn"></div>
+            <button class="btnToggle" @click="toggle">IN PRODUCTIE</button>
+            <button class="btnDelete" @click="delete">DELETE</button>
+        </div>
+
+        <!-- insert vue script -->
+
+        <script src="../JavaScript/backend.js"></script>
+
+         <!-- insert components -->
+
+         <script src="../assets/vueComponents/adminDonutDisplay.js"></script>
+
+        <!-- mount app -->
+    
+</body>
+</html>
