@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="../style/backend.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex"></script>
     <title>Document</title>
 </head>
 <body>
-        <h1>Vue Demo #1</h1>
-        <div id="vapp">
-            <p>Hello World: {{ author }}</p>
-            <p>Hello World: {{ donut }}</p>
-        </div>
 
+    <header>
+        <nav>
+            <a class="logo" href="index.html"><img src="../assets/donuttello-logo.png" alt="Logo van Donutello met een roze achtergrond en gele letters"></a>
+            <a class="active" href="../index.html">HOME</a>
+            <a href="#">CONFIGURATOR</a>
+            <a href="gallery.html">GALLERIJ</a>
+        </nav>
+      </header>
         <div>
             <div class="donutData">
             <img class="donut" :src="image" :alt="altDonut">
