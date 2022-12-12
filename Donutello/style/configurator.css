@@ -43,18 +43,17 @@ nav a:hover {
 }
 
 .logo img {
-    width: 137.66px;
-    vertical-align: middle;
-    position: fixed;
-    top: 20px;
+  width: 137.66px;
+  vertical-align: middle;
+  position: fixed;
+  top: 20px;
 
 }
 .logo {
-    position: fixed;
-    top: 20px;
-    left: 300px;
+  position: fixed;
+  top: 20px;
+  left: 300px;
 }
-
 /* ----------------placing container----------------- */
 
 .configContainer{
