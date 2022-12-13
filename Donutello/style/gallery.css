@@ -45,12 +45,55 @@ nav a:hover {
 .logo img {
     width: 137.66px;
     vertical-align: middle;
-    position: fixed;
     top: 20px;
-
-}
-.logo {
-    position: fixed;
+  
+  }
+  .logo {
+    position: absolute;
     top: 20px;
     left: 300px;
+  }
+
+.gallery{
+    margin-left: 250px;
+    margin-right: 250px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    height: 100%;
+}
+
+.infoDonut{
+    background-color: white;
+    font-family: 'Dosis', sans-serif;
+    margin: 50px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    border:  10px solid #FF4C8E;
+    border-radius: 30px;
+    padding: 20px 0px;
+}
+
+.infoImg{
+    width: 150px;
+    height: 150px;
+}
+
+.infoDonut span{
+    font-size: 20px;
+}
+
+.infoDonut a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    background-color: #F7E200;
+    text-align: center;
+    width: 60px;
+    
+    border-radius: 20px;
+    padding: 5px 20px;
 }
