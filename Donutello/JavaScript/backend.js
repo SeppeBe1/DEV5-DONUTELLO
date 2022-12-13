@@ -1,27 +1,28 @@
 Vue.component('donut',{
   template: `
+          <div class="donut">
             <div>
               <div class="donutData">
               <img class="donut" :src="image" :alt="altDonut">
-              <span>Name: {{ name }}</span>
-              <span>Business: {{ business }}</span>
-              <span>Author: {{ author }}</span>
-              <span>Date: {{ date }}</span>
-              <span>Amount: {{ amount }}</span>
+              <span>Name: {{ donut.donutNaam }}</span>
+              <span>Business: {{ donut.bedrijfsnaam }}</span>
+              <span>Date: {{ donut.datum }}</span>
+              <span>Amount: {{ donut.hoeveelheid }}</span>
             </div>
               
             <div class="ingredients">
               <h2>Ingredients</h2>
-              <span>Topping: {{ topping }}</span>
-              <span>Glaze: {{ glaze }}</span>
-              <span>Dough: {{ dough }}</span>
-              <span>Filling: {{ filling }}</span> 
+              <span>Topping: {{ donut.donutTopping }}</span>
+              <span>Glaze: {{ donut.donutGlazuur }}</span>
+              <span>Dough: {{ donut.donutDeeg }}</span>
+              <span>Filling: {{ donut.donutVulling }}</span> 
             </div>
 
             <div class="btn"></div>
               <a href="">In productie</a>
               <a href="">delete</a>
             </div>
+          </div>
             `,
             props:["donut"]
 });
@@ -49,7 +50,9 @@ var app = new Vue({
                 return response.json();
             })
             .then(json => {
-              that.donuts.push(json.data.donut);
+              for( let i = 0; i < json.data.donut.length ; i++){
+              that.donuts.push(json.data.donut[i]);
+              }
             });
         }
 
