@@ -12,7 +12,6 @@ fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
   for(let i = 0; i < json.data.donut.length ; i++ ){
     let datum = new Date(json.data.donut[i].datum);
 
-
     let donut = `
                   <div class="infoDonut" data-id="${json.data.donut[i]._id}">
                     <img class="infoImg" src="../assets/donutUndrawTest.svg" alt="donut">
