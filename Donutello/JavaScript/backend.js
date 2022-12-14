@@ -1,8 +1,8 @@
 Vue.component('donut',{
   template: `
           <div class="donut">
-          <img class="donutImg" src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/healthiest-cheese-1296x728-swiss.jpg" alt="altDonut">
-            <div class="donutData">
+          <img class="donutImg" src="../assets/donutUndrawTest.svg" alt="altDonut">
+            <div class="donutData" >
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
               <span>Business: {{ donut.bedrijfsnaam }}</span>
@@ -20,11 +20,25 @@ Vue.component('donut',{
 
             <div class="btnAdmin">
               <a class="btnReady" href="#">Klaar!</a>
-              <a class="btndelete" href="#">delete</a>
+              <a v-on:click="deleteDonut" class="btndelete" href="#" :data-id="donut._id">delete</a>
             </div>
           </div>
             `,
-            props:["donut"]
+            props:["donut"],
+            methods:{
+              deleteDonut(e){
+                console.log(e.target.getAttribute('data-id'));
+                var that = this;
+                var donutId = e.target.getAttribute('data-id');
+                fetch (`DELETE api/v1/donuts/${donutId}`, {
+                      method: "DELETE",
+                      headers: {
+                          "Content-Type": "application/json"
+                      }
+                  });
+              }
+            }
+
             // <a v-on:click.prevent="changeButton" class="btnProduction" href="#">In productie</a>
 });
 
@@ -65,23 +79,5 @@ var app = new Vue({
             });
         },
 
-        deleteDonut: function(e){
-          console.log(e);
-          // var that = this;
-          // fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
-          //       method: "DELETE",
-          //       headers: {
-          //           "Content-Type": "application/json"
-          //       }
-          //   }).then(response => {
-          //       //console.log(response);
-          //       return response.json();
-          //   })
-          //   .then(json => {
-          //     for( let i = 0; i < json.data.donut.length ; i++){
-          //     that.donuts.push(json.data.donut[i]);
-          //     }
-          //   });
-        }
       }
   });
