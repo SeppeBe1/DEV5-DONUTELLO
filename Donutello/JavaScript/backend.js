@@ -19,19 +19,21 @@ Vue.component('donut',{
             </div>
 
             <div class="btnAdmin">
-            <a class="btnReady" href="#">Klaar!</a>
-              <a class="btnProduction" href="#">In productie</a>
+              <a class="btnReady" href="#">Klaar!</a>
               <a class="btndelete" href="#">delete</a>
             </div>
           </div>
             `,
             props:["donut"]
+            // <a v-on:click.prevent="changeButton" class="btnProduction" href="#">In productie</a>
 });
 
 var app = new Vue({
     el: '#app',
       data: {
-        donuts: [] 
+        donuts: [],
+        // productionbtn: true,
+        // readybtn: false
       },
 
       mounted: function(){
@@ -39,6 +41,12 @@ var app = new Vue({
       },
 
       methods:{
+        changeButton: function(e){
+          console.log(e);
+          this.text = "kaas";
+          // this.productionbtn = !this.productionbtn;
+          // this.readybtn = !this.readybtn;
+        },
         getDonuts: function(){
           var that = this;
           fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
@@ -55,7 +63,25 @@ var app = new Vue({
               that.donuts.push(json.data.donut[i]);
               }
             });
-        }
+        },
 
+        deleteDonut: function(e){
+          console.log(e);
+          // var that = this;
+          // fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
+          //       method: "DELETE",
+          //       headers: {
+          //           "Content-Type": "application/json"
+          //       }
+          //   }).then(response => {
+          //       //console.log(response);
+          //       return response.json();
+          //   })
+          //   .then(json => {
+          //     for( let i = 0; i < json.data.donut.length ; i++){
+          //     that.donuts.push(json.data.donut[i]);
+          //     }
+          //   });
+        }
       }
-  })
+  });
