@@ -1,9 +1,9 @@
 Vue.component('donut',{
   template: `
           <div class="donut">
-            <div>
-              <div class="donutData">
-              <img class="donut" :src="image" :alt="altDonut">
+          <img class="donutImg" src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/healthiest-cheese-1296x728-swiss.jpg" alt="altDonut">
+            <div class="donutData">
+              <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
               <span>Business: {{ donut.bedrijfsnaam }}</span>
               <span>Date: {{ donut.datum }}</span>
@@ -18,9 +18,10 @@ Vue.component('donut',{
               <span>Filling: {{ donut.donutVulling }}</span> 
             </div>
 
-            <div class="btn"></div>
-              <a href="">In productie</a>
-              <a href="">delete</a>
+            <div class="btnAdmin">
+            <a class="btnReady" href="#">Klaar!</a>
+              <a class="btnProduction" href="#">In productie</a>
+              <a class="btndelete" href="#">delete</a>
             </div>
           </div>
             `,
