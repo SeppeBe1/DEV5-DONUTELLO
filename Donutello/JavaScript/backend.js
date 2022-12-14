@@ -1,4 +1,8 @@
 Vue.component('donut',{
+  data: function(){
+    return{ showBtn: false
+    }
+  },
   template: `
           <div class="donut">
           <img class="donutImg" src="../assets/donutUndrawTest.svg" alt="altDonut">
@@ -19,13 +23,26 @@ Vue.component('donut',{
             </div>
 
             <div class="btnAdmin">
-              <a class="btnReady" href="#">Klaar!</a>
+            <a v-on:click.prevent="changeButton" v-if="this.showBtn === false" class="btnProduction" href="#">In productie</a>
+            <a v-on:click.prevent="changeButton" v-if="this.showBtn === true" class="btnReady" href="#">Klaar</a>
               <a v-on:click="deleteDonut" class="btndelete" href="#" :data-id="donut._id">delete</a>
             </div>
           </div>
             `,
             props:["donut"],
             methods:{
+              changeButton(e){
+                console.log(e);
+                console.log(e.path[2]);
+                this.showBtn = !this.showBtn;
+                if( this.showBtn === false){
+                  e.path[2].style.borderColor = "#FB9144";
+                } else if(this.showBtn === true){
+                e.path[2].style.borderColor = "#7FF835";
+                }
+                
+              },
+
               deleteDonut(e){
                 console.log(e.target.getAttribute('data-id'));
                 var that = this;
@@ -46,21 +63,14 @@ var app = new Vue({
     el: '#app',
       data: {
         donuts: [],
-        // productionbtn: true,
-        // readybtn: false
       },
 
       mounted: function(){
         this.getDonuts();
+        this.changeButton(e);
       },
 
       methods:{
-        changeButton: function(e){
-          console.log(e);
-          this.text = "kaas";
-          // this.productionbtn = !this.productionbtn;
-          // this.readybtn = !this.readybtn;
-        },
         getDonuts: function(){
           var that = this;
           fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
