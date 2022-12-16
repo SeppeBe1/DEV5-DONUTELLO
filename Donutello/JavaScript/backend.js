@@ -50,13 +50,12 @@ Vue.component('donut',{
                 fetch (`DELETE api/v1/donuts/${donutId}`, {
                       method: "DELETE",
                       headers: {
-                          "Content-Type": "application/json"
+                          "Content-Type": "application/json",
+                          "authentication": ""
                       }
                   });
               }
             }
-
-            // <a v-on:click.prevent="changeButton" class="btnProduction" href="#">In productie</a>
 });
 
 var app = new Vue({
