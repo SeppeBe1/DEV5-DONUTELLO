@@ -21,9 +21,12 @@ btnSubmit.addEventListener("click",function(e){
 
     }).then(json => {
         console.log(json.status);
-        if(json.status = "failed"){
+        if(json.status == "failed"){
             validation.innerHTML = "Invalid username/password"
-        } else  if(json.status = "succes"){
+            console.log("geen kaas");
+        } else  if(json.status == "success"){
+            console.log(json.data.token);
+            localStorage.setItem("token", json.data.token);
             window.location.href = "../Pages/backend.html";
         }
     });

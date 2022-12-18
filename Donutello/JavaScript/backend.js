@@ -25,15 +25,13 @@ Vue.component('donut',{
             <div class="btnAdmin">
             <a v-on:click.prevent="changeButton" v-if="this.showBtn === false" class="btnProduction" href="#">In productie</a>
             <a v-on:click.prevent="changeButton" v-if="this.showBtn === true" class="btnReady" href="#">Klaar</a>
-              <a v-on:click="deleteDonut" class="btndelete" href="#" :data-id="donut._id">delete</a>
+              <a v-on:click.prevent="deleteDonut" class="btndelete" href="#" :data-id="donut._id">delete</a>
             </div>
           </div>
             `,
             props:["donut"],
             methods:{
-              changeButton(e){
-                console.log(e);
-                console.log(e.path[2]);
+              changeButton(){
                 this.showBtn = !this.showBtn;
                 if( this.showBtn === false){
                   e.path[2].style.borderColor = "#FB9144";
@@ -45,15 +43,19 @@ Vue.component('donut',{
 
               deleteDonut(e){
                 console.log(e.target.getAttribute('data-id'));
-                var that = this;
                 var donutId = e.target.getAttribute('data-id');
-                fetch (`DELETE api/v1/donuts/${donutId}`, {
+                let token = window.localStorage.getItem("token");
+                console.log(token); 
+                fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${donutId}`, {
                       method: "DELETE",
                       headers: {
                           "Content-Type": "application/json",
-                          "authentication": ""
+                          "Authorization": "Bearer " + token,
                       }
-                  });
+                  }).then(response => {
+                    console.log(response);
+                    return response.json();
+                });
               }
             }
 });

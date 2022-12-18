@@ -25,13 +25,10 @@ nav {
     z-index: 1;
     display: flex;
     flex-direction: row;
-    padding-left: auto;
-    padding-right: auto;
     justify-content: center;
 }
 
 nav a {
-    text-align: center;
     position: relative;
     color: #ffffff;
     text-decoration: none;
@@ -65,66 +62,46 @@ nav a:hover {
     height: 20px;
 }
 
-
-#app{
-    background-color: white;
-    margin-left: 250px;
-    margin-right: 250px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-.donut{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 2px solid;
-    border-color: black;
-    border-radius: 30px;
-    margin: 0px 250px 50px 250px;
-}
-
-.donutImg{
-    width: 150px;
-    padding: 20px;
-}
-
-.donutData{
+.changePassword{
     display: flex;
     flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 300px;
+
+    font-family: 'Dosis', sans-serif;
 }
 
-
-.ingredients{
-    display: flex;
-    flex-direction: column;
-}
-
-.btnAdmin{
-    display: flex;
-    flex-direction: column;
-}
-
-.btnAdmin a{
+.changePassword h2{
+    font-size: 30px;
     text-align: center;
-    text-decoration: none;
-    color: black;
-    width: 90px;
+    margin-bottom: 20px;
+}
+
+.changePassword input{
+    font-size: 30px;
+    height: 30px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 7px 10px;
-    border-radius: 15px;
+
+    margin-bottom: 30px;
+    padding: 10px 20px;
+
+    border-radius: 10px;
 }
 
-.btnReady{
-    background-color: #7FF835;
+.changePassword label{
+    font-size: 30px;
 }
 
-.btnProduction{
-    background-color: #FB9144;
+.subBtn{
+    text-align: center;
+    width: 200px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
 }
 
-.btndelete{
-    background-color: #FF5454;
-}
+
