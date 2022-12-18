@@ -128,3 +128,12 @@ nav a:hover {
 .btndelete{
     background-color: #FF5454;
 }
+
+.removed{
+    translate: 2000px;
+    transition: translate 1.5s ease-in;  
+}
+
+#app{
+    overflow-x: hidden;
+}
