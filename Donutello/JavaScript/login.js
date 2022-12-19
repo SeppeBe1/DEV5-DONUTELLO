@@ -4,7 +4,6 @@ let btnSubmit = document.querySelector(".subBtn");
 let validation = document.querySelector(".formValidation");
 
 btnSubmit.addEventListener("click",function(e){
-    console.log(passwordForm.value);
     e.preventDefault();
     fetch ("https://donuttelloapi.onrender.com/users/login", {
     method: "POST",

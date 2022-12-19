@@ -30,8 +30,11 @@ Vue.component('donut',{
           </div>
             `,
             props:["donut"],
+
+            mounted: function(){
+            },
             methods:{
-              changeButton(){
+              changeButton(e){
                 this.showBtn = !this.showBtn;
                 if( this.showBtn === false){
                   e.path[2].style.borderColor = "#FB9144";
@@ -40,29 +43,26 @@ Vue.component('donut',{
                 }
                 
               },
-
               deleteDonut(e){
                 console.log(e.target.parentElement.parentElement);
                 let currentDonut = e.target.parentElement.parentElement;
                 e.target.parentElement.parentElement.classList.add("removed");
                 var donutId = e.target.getAttribute('data-id');
                 let token = window.localStorage.getItem("token");
-                console.log(token); 
 
                 currentDonut.addEventListener("transitionend",() => {
                   currentDonut.remove();
               })
               
-                // fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${donutId}`, {
-                //       method: "DELETE",
-                //       headers: {
-                //           "Content-Type": "application/json",
-                //           "Authorization": "Bearer " + token,
-                //       }
-                //   }).then(response => {
-                //     console.log(response.ok);
-                //     return response.json();
-                // });
+                fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${donutId}`, {
+                      method: "DELETE",
+                      headers: {
+                          "Content-Type": "application/json",
+                          "Authorization": "Bearer " + token,
+                      }
+                  }).then(response => {
+                    return response.json();
+                });
               }
             }
 });
@@ -75,7 +75,6 @@ var app = new Vue({
 
       mounted: function(){
         this.getDonuts();
-        this.changeButton(e);
       },
 
       methods:{
@@ -87,7 +86,6 @@ var app = new Vue({
                     "Content-Type": "application/json"
                 }
             }).then(response => {
-                //console.log(response);
                 return response.json();
             })
             .then(json => {
@@ -96,6 +94,5 @@ var app = new Vue({
               }
             });
         },
-
       }
   });
