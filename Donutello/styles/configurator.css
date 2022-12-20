@@ -76,10 +76,10 @@ nav a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto;
-    width: 500px;
+   
+    width: 300px;
     
-    height: 220px;
+    height: 650px;
     background-color: #E82870;
     z-index: 1;
 }
@@ -141,7 +141,8 @@ height: 50px;
 }
 
 .container {
-   text-align: center;
+   
+   padding: 6px;
 }
 
 
@@ -186,6 +187,11 @@ height: 50px;
     border: 1px solid #3e3e3e;
 }
 
+input{
+    background-color: #ebe9ea;
+   border-bottom: #3e3e3e 1px solid;
+}
+
 .limoen {
     background-color: #7bfebc;
 }
@@ -223,6 +229,11 @@ p{color: rgb(31, 28, 28);}
 .card-container{
     width: 50px;
     height: 20px;
+}
+
+.container-button{
+  padding: 10px;
+  text-align: center;
 }
 
 button{

@@ -296,7 +296,7 @@ button.addEventListener("click", (e) => {
         .then(response => response.json())
         .then(data => {
             let previewURL = data.secure_url;
-            console.log(previewURL);
+           
 
            
 
@@ -307,21 +307,20 @@ button.addEventListener("click", (e) => {
 
                 let apiUrl = "https://donuttelloapi.onrender.com/api/v1/donuts";
 
-                let donutDeeg = "Standaard deeg"
-                let donutVulling = "test"
+               
                 let donutGlazuur = glaze
                 let donutTopping = sprinkles
-                let donutNaam = "Donuttello";
-
-                let bedrijfsnaam = "test"
-                let email = "test"
-                let telefoonnummer = "1234567891"
-                let adres = "test"
-                let huisnr = "23"
-                let postcode = "2244"
-                let woonplaats = "test"
+                let donutNaam = document.querySelector("#donutNaam").value
+console.log(donutNaam)
+                let bedrijfsnaam = document.querySelector("#bedrijfsnaam").value
+                let email = document.querySelector("#email").value
+                let telefoonnummer = document.querySelector("#telefoonnummer").value
+                let adres = document.querySelector("#adres").value
+                let huisnr = document.querySelector("#huisnr").value
+                let postcode = document.querySelector("#postcode").value
+                let woonplaats = document.querySelector("#woonplaats").value
                 let logo = "Donutello Logo"
-                console.log(donutDeeg, donutVulling, donutGlazuur, donutTopping, bedrijfsnaam, email, telefoonnummer, adres, huisnr, postcode, woonplaats, logo, datum);
+                console.log(donutGlazuur, donutTopping,donutNaam, bedrijfsnaam, email, telefoonnummer, adres, huisnr, postcode, woonplaats, logo, datum);
 
 
                 fetch(apiUrl, {
@@ -332,8 +331,7 @@ button.addEventListener("click", (e) => {
                         body: JSON.stringify({
                             "donutPreview": previewURL,
                             "donutNaam": donutNaam,
-                            "donutDeeg": donutDeeg,
-                            "donutVulling": donutVulling,
+                           
                             "donutGlazuur": donutGlazuur,
                             "donutTopping": donutTopping,
                             "bedrijfsnaam": bedrijfsnaam,
@@ -363,7 +361,7 @@ button.addEventListener("click", (e) => {
 
 
                         } else {
-                            alert("Donut niet toegevoegd");
+                            alert("Donut niet toegevoegd, gelieve alle velden in te velden behanvle logo");
                         }
 
 
@@ -387,8 +385,7 @@ button.addEventListener("click", (e) => {
 
                         let apiUrl = "https://donuttelloapi.onrender.com/api/v1/donuts";
 
-                        let donutDeeg = "test"
-                        let donutVulling = "test"
+                       
                         let donutGlazuur = "test"
                         let donutTopping = "test"
                         let donutNaam = "Donuttello";
@@ -412,8 +409,7 @@ button.addEventListener("click", (e) => {
 
                                     "donutPreview": previewURL,
                                     "donutNaam": donutNaam,
-                                    "donutDeeg": donutDeeg,
-                                    "donutVulling": donutVulling,
+                                   
                                     "donutGlazuur": donutGlazuur,
                                     "donutTopping": donutTopping,
                                     "bedrijfsnaam": bedrijfsnaam,
