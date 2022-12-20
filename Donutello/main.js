@@ -1,9 +1,10 @@
 //import threejs
 
 import * as THREE from 'three';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
+
 
 //Scene
 const scene = new THREE.Scene();
@@ -24,13 +25,6 @@ window.addEventListener('resize', () => {
 })
 
 
-// Create Box
-const boxGeometry = new THREE.BoxGeometry(2, 2, 2);
-const boxMaterial = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
-const boxMesh = new THREE.Mesh(boxGeometry, 
-boxMaterial);
-boxMesh.rotation.set(40, 0, 40);
-scene.add(boxMesh);
 
 //Lights
 const light = new THREE.PointLight(0xFFFFFF, 1, 100);
@@ -49,6 +43,37 @@ controls.maxDistance = 5;
 camera.position.set( 0, 20, 100 );
 controls.update();
 
+
+//omport donu tmodel from obj file
+const loader = new OBJLoader();
+loader.load(
+    // resource URL
+    '/assets/models/Donut.obj',
+    // called when resource is loaded
+    function ( object ) {
+
+        //add color to Donut.obj from menu
+        object.traverse( function ( child ) {
+            if ( child.isMesh ) {
+                child.material.color.set( 0x00ff00 );
+            }
+        } );
+        
+        
+        object.scale.set( 10, 10, 10 );
+        scene.add( object );
+    },
+    // called when loading is in progresses
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+        document.getElementById("loading__time").innerHTML = ( xhr.loaded / xhr.total * 100 ) + '% loaded';
+    },
+    // called when loading has errors
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
 
 
 // Rendering Function

@@ -2,43 +2,166 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="./assets/donuttello-logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Donutello for Businesses</title>
-  <link rel="stylesheet" href="./style/style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/configurator.css" />
+    <title>Donutello</title>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a id="logo" href="index.html"><img src="./assets/donuttello-logo.png"
-          alt="Logo van Donutello met een roze achtergrond en gele letters"></a>
-      <a class="active" href="index.html">HOME</a>
-      <a href="./Pages/configurator.html">CONFIGURATOR</a>
-      <a href="./Pages/gallery.html">GALLERIJ</a>
 
-    </nav>
-  </header>
+    <header>
 
-  <main>
-    <h1>ZIN IN EEN DONUT?</h1>
-    <div class="container">
-      <div class="donut">
-        <img src="./assets/donutImageSorry.PNG" alt="">
-      </div>
-      <div class="paragraph">
-        <h2>CONFIGUREER JE DONUT</h2>
-        <p>Altijd al je eigen donut hebben willen creëren? <br>
-          Dat kan nu! <br>
-          Kies je favoriete kleur, vorm en topping en wij maken je donut klaar!
-          Maak je donut nog persoonlijker, door je eigen logo er op tentoon te stellen. <br>
-          Maak, bestel en geniet!</p>
-        <button><a href="">CREATE DONUT</a></button>
-      </div>
+        <div class="topnav">
+            <a href="../index.html">Home</a>
+            <a class="active" href="#configurator.html">Design</a>
+            <a href="gallery.html">Gallery</a>
+
+        </div>
+
+    </header>
+
+
+    <div class="configContainer">
+
+        <div class="loading">
+            <div class="loading__container" id="loading__time">
+            </div>
+        </div>
+
+
+
+        <div class="configurator">
+
+
+            <div class="container">
+                <p>Glaze</p>
+
+                <div class="horizontal-scroll">
+
+                    <div class="color-container">
+                        <div class="color-container-one">
+                            <div class="color-circle-glaze green" data-color="green" id="button__green"></div>
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-glaze blue" data-color="blue" id="button__green"></div>
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-glaze red" data-color="red" id="button__green"></div>
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-glaze green" data-color="green" id="button__green"></div>
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-glaze green" data-color="green" id="button__green"></div>
+                            <p>bosbess</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="container">
+                <p>Sprinkles</p>
+
+                <div class="horizontal-scroll">
+
+                    <div class="color-container">
+                        <div class="color-container-one">
+                            <div class="color-circle-sprinkles green" data-model="/assets/models/Sprinkles.obj"
+                                data-color="blue"></div>
+
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+
+                            <div class="color-circle-sprinkles blue" data-model="/assets/models/SprinklesBol.obj"
+                                data-color="black"></div>
+
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-sprinkles yellow" data-model="/assets/models/SprinklesRect.obj"
+                                data-color="yellow"></div>
+                            <p>bosbess</p>
+
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-sprinkles orange" data-model="/assets/models/SprinklesRand.obj"
+                                data-color="brown"></div>
+
+                            <p>bosbess</p>
+                        </div>
+
+                        <div class="color-container-one">
+                            <div class="color-circle-sprinkles red" data-model="/assets/models/SprinklesLineBetterA.obj"
+                                data-color="red"></div>
+
+                            <p>bosbess</p>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+               
+
+            </div>
+
+            <div class="container">
+
+                    <form action="/action_page.php">
+                    <input type="file" id="myFile" name="filename">
+                  </form>
+
+
+            </div>
+
+            <div class="container">
+
+                <form action="">
+                <input type="submit">
+              </form>
+
+
+        </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
     </div>
 
-  </main>
+
+
+    <script type="module" src="/scripts/configurator.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
 
 </body>
 

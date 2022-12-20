@@ -1,0 +1,225 @@
+* {
+    /*everything 0 */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to bottom, rgba(231, 40, 112, 0.5), rgba(97, 209, 214, 0.5)), url('../assets/background\ \(1\).png');
+    background-repeat: repeat;
+    background-size: 10%;
+}
+
+/* ----------------header / nav ----------------- */
+
+
+header {
+    background-color: #E72870;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 1;
+}
+
+nav {
+    background-color: #E72870;
+
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 1;
+    color: snow;
+}
+
+header a {
+
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Dosis', sans-serif;
+    padding: 10px;
+    font-weight: 550;
+    top: 50px;
+    height: 44.8px;
+    font-size: 19.2px;
+    left: 800px;
+}
+
+nav a:hover {
+    color: #F7E23A;
+}
+
+.logo img {
+    width: 137.66px;
+    vertical-align: middle;
+
+    top: 20px;
+
+}
+
+.logo {
+
+    top: 20px;
+    left: 300px;
+}
+
+/* ----------------placing container----------------- */
+
+/*place configcontainer bottom on sreen */
+.configContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    
+    height: 220px;
+    background-color: #E82870;
+    z-index: 1;
+}
+
+/* ----------------configurator----------------- */
+
+.configurator {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #ffffff;
+  
+}
+
+/* ----------------configurator canvas----------------- */
+
+
+
+.loading {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 20px;
+    background-color: aqua;
+    text-align: center;
+
+}
+
+
+
+
+/* ----------------configurator ITEMS----------------- */
+
+.hidden {
+    display: none;
+}
+
+
+
+.horizontal-scroll {
+    overflow: hidden;
+width: 100%;
+height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: snow;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+}
+
+
+.color-container-one{
+    text-align: center;
+}
+
+.container {
+   text-align: center;
+}
+
+
+.color-container {
+    display: flex;
+ position: absolute;
+
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  
+   
+    list-style: none;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #3e3e3e;
+}
+
+.color-circle-glaze {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #3e3e3e;
+}
+
+.color-circle-sprinkles {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #3e3e3e;
+}
+
+.green {
+    background-color: #00FF00;
+}
+
+.blue {
+    background-color: #0000FF;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.yellow {
+    background-color: #FFFF00;
+}
+
+.orange {
+    background-color: #FFA500;
+}
+
+.purple {
+    background-color: #800080;
+}
+
+p{color: rgb(31, 28, 28);}
+
+.addCard{
+    background-color: #E72870;
+    width: 50px;
+    height: 20px;
+    position: fixed;
+}
+
+.card-container{
+    width: 50px;
+    height: 20px;
+}

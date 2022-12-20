@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,46 @@
     <link rel="stylesheet" href="../style/configurator.css" />
     <title>Donutello</title>
 </head>
+
 <body>
+    <header>
+        <nav>
+            <a class="logo" href="index.html"><img src="../assets/donuttello-logo.png"
+                    alt="Logo van Donutello met een roze achtergrond en gele letters"></a>
+            <a class="active" href="../index.html">HOME</a>
+            <a href="#">CONFIGURATOR</a>
+            <a href="gallery.html">GALLERIJ</a>
+        </nav>
+    </header>
 
-  
+    <div class="configContainer">
+        <div class="configurator">
+            <button id="btn">Button</button>
+            <button id="btn">Button</button>
+            <button id="btn">Button</button>
 
+            <div class="topping">
+        
+            </div>
+            <div class="glaze">
+             
+            </div>
+            <div class="dough">
+               
+            </div>
 
+    </div>
 
-    <script type="module" src="../main.js"></script>
+    //show loading time from main.js object
+
+    <div class="loading">
+        <div class="loading__container" id="loading__time">
+           
+          
+        </div>
+    </div>
+
+    <script type="module" src="../JavaScript/configurator.js"></script>
 </body>
+
 </html>
