@@ -1,0 +1,119 @@
+* {
+    /*everything 0 */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: 'Dosis', sans-serif;
+}
+
+html {
+    min-height: 100%;
+}
+body {
+    background-image: linear-gradient(to bottom,rgba(231, 40, 112, 0.5) ,rgba(97, 209, 214, 0.5 )) , url('../assets/background\ \(1\).png');
+    background-repeat: repeat;
+    background-size: 10%;
+}
+
+/* ----------------header / nav ----------------- */
+nav {
+    background-color: #E72870;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+nav a {
+    position: relative;
+    left: 400px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Dosis', sans-serif;
+    padding: 10px;
+    font-weight: 550;
+    top: 35px;
+    height: 44.8px;
+    font-size: 19.2px;
+    left: 800px;
+}
+
+nav a:hover {
+    color: #F7E23A;
+}
+
+.logo img {
+    width: 137.66px;
+    vertical-align: middle;
+    position: fixed;
+    top: 20px;
+
+}
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 300px;
+}
+
+
+#app{
+    background-color: white;
+    margin-left: 250px;
+    margin-right: 250px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.donut{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    border-radius: 30px;
+    margin: 0px 250px 50px 250px;
+}
+
+.donutImg{
+    width: 150px;
+    padding: 20px;
+}
+
+.donutData{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.ingredients{
+    display: flex;
+    flex-direction: column;
+}
+
+.btnAdmin{
+    display: flex;
+    flex-direction: column;
+}
+
+.btnAdmin a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border-radius: 15px;
+}
+
+.btnReady{
+    background-color: #7FF835;
+}
+
+.btnProduction{
+    background-color: #FB9144;
+}
+
+.btndelete{
+    background-color: #FF5454;
+}
