@@ -186,29 +186,30 @@ height: 50px;
     border: 1px solid #3e3e3e;
 }
 
-.green {
-    background-color: #00FF00;
+.limoen {
+    background-color: #7bfebc;
 }
 
-.blue {
-    background-color: #0000FF;
+.bosbes {
+    background-color: #6666ff;
 }
 
-.red {
-    background-color: #FF0000;
+.aarbei {
+    background-color: #f71a5b;
 }
 
-.yellow {
-    background-color: #FFFF00;
+.kers {
+    background-color: #fe7ba7;
 }
 
-.orange {
-    background-color: #FFA500;
+.pistache {
+    background-color: #679267;
 }
 
-.purple {
-    background-color: #800080;
+.grey {
+    background-color: #3e3e3e;
 }
+
 
 p{color: rgb(31, 28, 28);}
 
@@ -222,4 +223,14 @@ p{color: rgb(31, 28, 28);}
 .card-container{
     width: 50px;
     height: 20px;
+}
+
+button{
+    background-color: #E72870;
+    width: 80px;
+    height: 20px;
+    text-align: center;
+  
+    color: azure;
+    font-weight: 700;
 }

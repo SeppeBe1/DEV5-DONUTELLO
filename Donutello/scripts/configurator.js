@@ -13,10 +13,19 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5; // <- New code
 //Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({
+    antialias: true
+});
 renderer.setClearColor("pink");
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+//add the canvas to the html with id
+
 document.body.appendChild(renderer.domElement);
+renderer.domElement.id = "canvas";
+
+
 
 // Make Canvas Responsive
 window.addEventListener('resize', () => {
@@ -126,24 +135,24 @@ const buttonssprinkles = document.querySelectorAll('.color-circle-sprinkles');
 buttonssprinkles.forEach(buttonsprinkle => {
     buttonsprinkle.addEventListener('click', function () {
         console.log("button clicked");
-        
-    //dispose cuurnt obj
-    
-    scene.remove(scene.children[5]);
 
- 
-   
+        //dispose cuurnt obj
+
+        scene.remove(scene.children[5]);
+
+
+
         let model = buttonsprinkle.getAttribute("data-model");
         let color = buttonsprinkle.getAttribute("data-color");
 
-        
-            sprinkles= buttonsprinkle.getAttribute("data-name");
-        
-      
+
+        sprinkles = buttonsprinkle.getAttribute("data-name");
+
+
         console.log(glaze)
 
-       
-    
+
+
         //omport donu tmodel from obj file
         const loader = new OBJLoader();
         loader.load(
@@ -157,7 +166,7 @@ buttonssprinkles.forEach(buttonsprinkle => {
                     if (child.isMesh) {
                         //add color to the object
                         child.material.color.set(color);
-                        
+
                     }
                 });
 
@@ -192,10 +201,40 @@ const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
 cube.position.set(0.3, 0.5, 1.5);
-cube.rotation.set(0.6, 0,0);
+cube.rotation.set(0.6, 0, 0);
 
 //add texture to little cube
 const texture = new THREE.TextureLoader().load('/assets/textures/Donutello_card.jpg');
+
+//replace texture with image from input and update texture
+const input = document.querySelector('#logo');
+input.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', function (e) {
+        texture.image.src = e.target.result;
+        texture.needsUpdate = true;
+        
+        //texture full size
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.format = THREE.RGBFormat;
+        texture.generateMipmaps = false;
+        texture.flipY = true;
+        texture.unpackAlignment = 1;
+
+        //texture rotation in degrees
+
+
+
+
+
+
+    });
+    reader.readAsDataURL(file);
+});
+
+
 const materialTexture = new THREE.MeshBasicMaterial({
     map: texture
 });
@@ -203,7 +242,7 @@ const materialTexture = new THREE.MeshBasicMaterial({
 
 cube.material = materialTexture;
 
-console.log("halooooooooo")
+
 // Rendering Function
 const rendering = function () {
     requestAnimationFrame(rendering);
@@ -215,37 +254,243 @@ const rendering = function () {
 }
 rendering();
 
+//-_______________________API__________________________-//
+
+
 console.log(glaze)
 console.log(sprinkles)
 
-// upload to the api
-let btnSubmit = document.querySelector(".subBtn");
+
+let logoUrl;
+let datum = Date.now();
 
 
-btnSubmit.addEventListener("click",function(e){
+let canvas = document.querySelector("#canvas");
+let ctx = canvas.getContext("2d");
+let reader = new FileReader();
+let img = new Image();
+
+
+
+
+
+
+
+
+
+let cloudinaryAPI = "734646525192331";
+let cloudName = "dq2ctla9j";
+let button = document.querySelector(".subBtn");
+button.addEventListener("click", (e) => {
+    let preview = canvas.toDataURL("image/png");
+
+    let formData = new FormData();
+    formData.append("file", preview);
+    formData.append("upload_preset", "eg0z27kj");
+    fetch("https://api.cloudinary.com/v1_1/dq2ctla9j/image/upload", {
+            method: "POST",
+            body: formData
+
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            let previewURL = data.secure_url;
+            console.log(previewURL);
+
+           
+
+            if (document.querySelector("#logo").files.length == 0) {
+
+
+
+
+                let apiUrl = "https://donuttelloapi.onrender.com/api/v1/donuts";
+
+                let donutDeeg = "Standaard deeg"
+                let donutVulling = "test"
+                let donutGlazuur = glaze
+                let donutTopping = sprinkles
+                let donutNaam = "Donuttello";
+
+                let bedrijfsnaam = "test"
+                let email = "test"
+                let telefoonnummer = "1234567891"
+                let adres = "test"
+                let huisnr = "23"
+                let postcode = "2244"
+                let woonplaats = "test"
+                let logo = "Donutello Logo"
+                console.log(donutDeeg, donutVulling, donutGlazuur, donutTopping, bedrijfsnaam, email, telefoonnummer, adres, huisnr, postcode, woonplaats, logo, datum);
+
+
+                fetch(apiUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "donutPreview": previewURL,
+                            "donutNaam": donutNaam,
+                            "donutDeeg": donutDeeg,
+                            "donutVulling": donutVulling,
+                            "donutGlazuur": donutGlazuur,
+                            "donutTopping": donutTopping,
+                            "bedrijfsnaam": bedrijfsnaam,
+                            "email": email,
+                            "telefoon": telefoonnummer,
+                            "straat": adres,
+                            "straatnr": huisnr,
+                            "postcode": postcode,
+                            "gemeente": woonplaats,
+                            "logo": "",
+                            "ready": "false",
+                            "hoeveelheid": "5",
+                            //datum now
+                            "datum": datum
+                        })
+                    })
+
+
+                    .then(response => response.json())
+                    .then(json => {
+
+                        if (json.status === "success") {
+                            alert("Donut toegevoegd");
+                          
+
+                            //de donut komt in de database
+
+
+                        } else {
+                            alert("Donut niet toegevoegd");
+                        }
+
+
+                    })
+            } else {
+
+                let logo = document.querySelector("#logo").files[0];
+                let formData = new FormData();
+                formData.append("file", logo);
+                formData.append("upload_preset", "eg0z27kj");
+                fetch("https://api.cloudinary.com/v1_1/dq2ctla9j/image/upload", {
+                        method: "POST",
+                        body: formData
+
+                    })
+
+                    .then(response => response.json())
+                    .then(data => {
+                        logoUrl = data.secure_url;
+
+
+                        let apiUrl = "https://donuttelloapi.onrender.com/api/v1/donuts";
+
+                        let donutDeeg = "test"
+                        let donutVulling = "test"
+                        let donutGlazuur = "test"
+                        let donutTopping = "test"
+                        let donutNaam = "Donuttello";
+        
+                        let bedrijfsnaam = "test"
+                        let email = "test"
+                        let telefoonnummer = "1234567891"
+                        let adres = "test"
+                        let huisnr = "23"
+                        let postcode = "2244"
+                        let woonplaats = "test"
+
+
+                        fetch(apiUrl, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    "donutPreview": previewURL,
+                                    "donutNaam": donutNaam,
+                                    "donutDeeg": donutDeeg,
+                                    "donutVulling": donutVulling,
+                                    "donutGlazuur": donutGlazuur,
+                                    "donutTopping": donutTopping,
+                                    "bedrijfsnaam": bedrijfsnaam,
+                                    "email": email,
+                                    "telefoon": telefoonnummer,
+                                    "straat": adres,
+                                    "straatnr": huisnr,
+                                    "postcode": postcode,
+                                    "gemeente": woonplaats,
+                                    "logo": logoUrl,
+                                    "ready": "false",
+                                    "hoeveelheid": "5",
+                                    //datum now
+                                    "datum": datum
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(json => {
+
+                                if (json.status === "success") {
+                                    alert("Donut toegevoegd");
+         
+                                } else {
+                                    alert("Donut niet toegevoegd");
+                                }
+
+
+
+
+                            })
+
+
+
+
+
+
+
+
+
+                    })
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        })
+
+
+
+
+
+
+
+
+
     e.preventDefault();
-    fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        "donutTopping": glaze,
 
-    }),
-    }).then(response => {
-        console.log(response);
-        return response.json();
 
-    }).then(json => {
-        console.log(json.status);
-        if(json.status == "failed"){
-            validation.innerHTML = "Invalid username/password"
-            console.log("geen kaas");
-        } else  if(json.status == "success"){
-            console.log(json.data.token);
-            localStorage.setItem("token", json.data.token);
-            window.location.href = "../Pages/backend.html";
-        }
-    });
+
 });
+
+
+
+
+
