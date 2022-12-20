@@ -26,7 +26,6 @@ btnSubmit.addEventListener("click",function(e){
                 return response.json();
         
             }).then(json => {
-                console.log(json)
 
                 if(json.status == "error"){
                     validation.innerHTML = "Password did not change";
