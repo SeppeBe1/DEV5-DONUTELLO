@@ -11,7 +11,7 @@ Vue.component('donut',{
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
               <span>Business: {{ donut.bedrijfsnaam }}</span>
-              <span>Date: {{ donut.datum }}</span>
+              <span class="date">{{format_date(donut.datum)}}</span> 
               <span>Amount: {{ donut.hoeveelheid }}</span>
             </div>
               
@@ -32,8 +32,6 @@ Vue.component('donut',{
             `,
             props:["donut"],
 
-            mounted: function(){
-            },
             methods:{
               changeButton(e){
                 this.showBtn = !this.showBtn;
@@ -41,9 +39,14 @@ Vue.component('donut',{
                   e.path[2].style.borderColor = "#FB9144";
                 } else if(this.showBtn === true){
                 e.path[2].style.borderColor = "#7FF835";
-                }
-                
+                }  
               },
+
+              format_date(date){
+                let datum = new Date(date).toLocaleDateString();
+                return "Date: " + datum;
+               },
+
               deleteDonut(e){
                 console.log(e.target.parentElement.parentElement);
                 let currentDonut = e.target.parentElement.parentElement;
