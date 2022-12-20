@@ -6,11 +6,7 @@ Vue.component('donut',{
   },
   template: `
           <div class="donut">
-<<<<<<< HEAD:Donutello/JavaScript/backend.js
           <img class="donutImg" v-bind:src=donut.donutPreview alt="altDonut">
-=======
-          <img class="donutImg" v-bind:src="donut.donutPreview" alt="altDonut">
->>>>>>> main:Donutello/scripts/backend.js
             <div class="donutData" >
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
