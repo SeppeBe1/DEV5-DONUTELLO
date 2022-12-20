@@ -1,16 +1,17 @@
 Vue.component('donut',{
   data: function(){
     return{ showBtn: false
+
     }
   },
   template: `
           <div class="donut">
-          <img class="donutImg" v-bind:src="donut.donutPreview" alt="altDonut">
+          <img class="donutImg" v-bind:src=donut.donutPreview alt="altDonut">
             <div class="donutData" >
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
               <span>Business: {{ donut.bedrijfsnaam }}</span>
-              <span>Date: {{ donut.datum }}</span>
+              <span class="date">{{format_date(donut.datum)}}</span> 
               <span>Amount: {{ donut.hoeveelheid }}</span>
             </div>
               
@@ -31,18 +32,38 @@ Vue.component('donut',{
             `,
             props:["donut"],
 
-            mounted: function(){
-            },
             methods:{
               changeButton(e){
                 this.showBtn = !this.showBtn;
                 if( this.showBtn === false){
+                //   fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
+                //     method: "GET",
+                //     headers: {
+                //         "Content-Type": "application/json"
+                //     }
+                // }).then(response => {
+                //   console.log(response);
+                //     return response.json();
+                // })
+                // .then(json => {
+                //   for( let i = 0; i < json.data.donut.length ; i++){
+                //     console.log(json.data.donut[i].donutPreview);
+                //   that.donuts.push(json.data.donut[i]);
+                //   }
+                // });
+                console.log(e.target.innerHTML);
                   e.path[2].style.borderColor = "#FB9144";
                 } else if(this.showBtn === true){
+                  console.log(e.target.innerHTML);
                 e.path[2].style.borderColor = "#7FF835";
-                }
-                
+                }  
               },
+
+              format_date(date){
+                let datum = new Date(date).toLocaleDateString();
+                return "Date: " + datum;
+               },
+
               deleteDonut(e){
                 console.log(e.target.parentElement.parentElement);
                 let currentDonut = e.target.parentElement.parentElement;
@@ -53,7 +74,6 @@ Vue.component('donut',{
                 currentDonut.addEventListener("transitionend",() => {
                   currentDonut.remove();
               })
-              
                 fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${donutId}`, {
                       method: "DELETE",
                       headers: {
@@ -86,10 +106,12 @@ var app = new Vue({
                     "Content-Type": "application/json"
                 }
             }).then(response => {
+              console.log(response);
                 return response.json();
             })
             .then(json => {
               for( let i = 0; i < json.data.donut.length ; i++){
+                console.log(json.data.donut[i].donutPreview);
               that.donuts.push(json.data.donut[i]);
               }
             });

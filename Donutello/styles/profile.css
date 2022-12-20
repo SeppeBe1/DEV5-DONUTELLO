@@ -63,6 +63,9 @@ nav a:hover {
 }
 
 .changePassword{
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px 50px;
     display: flex;
     flex-direction: column;
 
@@ -81,6 +84,7 @@ nav a:hover {
 }
 
 .changePassword input{
+    background-color: #dbdbdb;
     font-size: 30px;
     height: 30px;
     margin-top: 10px;
@@ -89,6 +93,10 @@ nav a:hover {
     padding: 10px 20px;
 
     border-radius: 10px;
+}
+
+.changePassword input:focus-visible{
+border: solid #E72870 2px;
 }
 
 .changePassword label{
@@ -101,7 +109,18 @@ nav a:hover {
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
+
+    padding: 10px 15px;
+    
+    border: solid #E72870 2px;
     border-radius: 6px;
+}
+
+.formValidation{
+    text-align: center;
+
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 

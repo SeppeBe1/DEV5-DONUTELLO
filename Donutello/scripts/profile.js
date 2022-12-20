@@ -18,7 +18,8 @@ btnSubmit.addEventListener("click",function(e){
                 "Authorization": "Bearer " + token,
             },
             body: JSON.stringify({
-                "password": password.value,
+                "username": "Donuttell0",
+                "password": password.value
             }),
             }).then(response => {
                 console.log(response);
@@ -29,12 +30,17 @@ btnSubmit.addEventListener("click",function(e){
 
                 if(json.status == "error"){
                     validation.innerHTML = "Password did not change";
+                    validation.style.color = "red";
                 } else  if(json.status == "success"){
-                    validation.innerHTML = "Password changed";
+                    validation.innerHTML = "Password succesfully changed";
+                    validation.style.color = "green";
+                    password.value = "";
+                    repPassword.value = "";
                 }
             });
 
     } else {
         validation.innerHTML = "Password incorrect";
+        validation.style.color = "red";
     }
 });
