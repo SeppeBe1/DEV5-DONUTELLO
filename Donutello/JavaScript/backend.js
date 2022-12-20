@@ -1,11 +1,12 @@
 Vue.component('donut',{
   data: function(){
     return{ showBtn: false
+
     }
   },
   template: `
           <div class="donut">
-          <img class="donutImg" src="../assets/donutUndrawTest.svg" alt="altDonut">
+          <img class="donutImg" v-bind:src=donut.donutPreview alt="altDonut">
             <div class="donutData" >
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
@@ -86,10 +87,12 @@ var app = new Vue({
                     "Content-Type": "application/json"
                 }
             }).then(response => {
+              console.log(response);
                 return response.json();
             })
             .then(json => {
               for( let i = 0; i < json.data.donut.length ; i++){
+                console.log(json.data.donut[i].donutPreview);
               that.donuts.push(json.data.donut[i]);
               }
             });
