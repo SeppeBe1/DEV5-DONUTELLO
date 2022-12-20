@@ -311,7 +311,7 @@ button.addEventListener("click", (e) => {
                 let donutGlazuur = glaze
                 let donutTopping = sprinkles
                 let donutNaam = document.querySelector("#donutNaam").value
-console.log(donutNaam)
+
                 let bedrijfsnaam = document.querySelector("#bedrijfsnaam").value
                 let email = document.querySelector("#email").value
                 let telefoonnummer = document.querySelector("#telefoonnummer").value
@@ -361,7 +361,7 @@ console.log(donutNaam)
 
 
                         } else {
-                            alert("Donut niet toegevoegd, gelieve alle velden in te velden behanvle logo");
+                            alert("Donut niet toegevoegd, gelieve alle velden in te velden");
                         }
 
 
@@ -386,17 +386,18 @@ console.log(donutNaam)
                         let apiUrl = "https://donuttelloapi.onrender.com/api/v1/donuts";
 
                        
-                        let donutGlazuur = "test"
-                        let donutTopping = "test"
-                        let donutNaam = "Donuttello";
-        
-                        let bedrijfsnaam = "test"
-                        let email = "test"
-                        let telefoonnummer = "1234567891"
-                        let adres = "test"
-                        let huisnr = "23"
-                        let postcode = "2244"
-                        let woonplaats = "test"
+                        
+                let donutGlazuur = glaze
+                let donutTopping = sprinkles
+                let donutNaam = document.querySelector("#donutNaam").value
+
+                let bedrijfsnaam = document.querySelector("#bedrijfsnaam").value
+                let email = document.querySelector("#email").value
+                let telefoonnummer = document.querySelector("#telefoonnummer").value
+                let adres = document.querySelector("#adres").value
+                let huisnr = document.querySelector("#huisnr").value
+                let postcode = document.querySelector("#postcode").value
+                let woonplaats = document.querySelector("#woonplaats").value
 
 
                         fetch(apiUrl, {
