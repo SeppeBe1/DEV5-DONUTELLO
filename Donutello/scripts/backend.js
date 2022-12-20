@@ -5,7 +5,7 @@ Vue.component('donut',{
   },
   template: `
           <div class="donut">
-          <img class="donutImg" v-bind:src="{{donut.donutPreview}}" alt="altDonut">
+          <img class="donutImg" v-bind:src="donut.donutPreview" alt="altDonut">
             <div class="donutData" >
               <h2>Donut data</h2>
               <span>Name: {{ donut.donutNaam }}</span>
