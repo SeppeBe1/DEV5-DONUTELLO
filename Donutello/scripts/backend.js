@@ -18,14 +18,14 @@ Vue.component('donut',{
             <div class="ingredients">
               <h2>Ingredients</h2>
               <span>Topping: {{ donut.donutTopping }}</span>
-              <span>Glaze: {{ donut.donutGlazuur }}</span>
+              <span>Glaze: {{ donut.donutGlazuur}}</span>
               <span>Dough: {{ donut.donutDeeg }}</span>
               <span>Filling: {{ donut.donutVulling }}</span> 
             </div>
 
             <div class="btnAdmin">
-            <a v-on:click.prevent="changeButton" v-if="this.showBtn === false" class="btnProduction" href="#">In productie</a>
-            <a v-on:click.prevent="changeButton" v-if="this.showBtn === true" class="btnReady" href="#">Klaar</a>
+            <a v-on:click.prevent="changeButton" v-if="donut.ready === false" :data-id="donut._id" class="btnStatus btnProduction" href="#">In productie</a>
+            <a v-on:click.prevent="changeButton" v-if="donut.ready === true" :data-id="donut._id" class="btnStatus btnReady" href="#">Klaar</a>
               <a v-on:click.prevent="deleteDonut" class="btndelete" href="#" :data-id="donut._id">delete</a>
             </div>
           </div>
@@ -34,27 +34,47 @@ Vue.component('donut',{
 
             methods:{
               changeButton(e){
-                this.showBtn = !this.showBtn;
-                if( this.showBtn === false){
-                //   fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
-                //     method: "GET",
-                //     headers: {
-                //         "Content-Type": "application/json"
-                //     }
-                // }).then(response => {
-                //   console.log(response);
-                //     return response.json();
-                // })
-                // .then(json => {
-                //   for( let i = 0; i < json.data.donut.length ; i++){
-                //     console.log(json.data.donut[i].donutPreview);
-                //   that.donuts.push(json.data.donut[i]);
-                //   }
-                // });
-                console.log(e.target.innerHTML);
+                let token = window.localStorage.getItem("token");
+                this.donut.ready = !this.donut.ready;
+                if( this.donut.ready === false){
+                fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${e.target.getAttribute("data-id")}`, {
+                  method: "PUT",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": "Bearer " + token,
+                  },
+                  body: JSON.stringify({
+                      "_id": e.target.getAttribute("data-id"),
+                      "ready": false,
+                  }),
+                  }).then(response => {
+                      return response.json();
+              
+                  }).then(json => {
+                      if(json.status == "error"){
+                      } else  if(json.status == "success"){
+                      }
+                  });
                   e.path[2].style.borderColor = "#FB9144";
-                } else if(this.showBtn === true){
-                  console.log(e.target.innerHTML);
+                } else if(this.donut.ready === true){
+                  fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${e.target.getAttribute("data-id")}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token,
+                    },
+                    body: JSON.stringify({
+                        "_id": e.target.getAttribute("data-id"),
+                        "ready": true,
+                    }),
+                    }).then(response => {
+                        return response.json();
+                
+                    }).then(json => {
+                        if(json.status == "error"){
+                        } else  if(json.status == "success"){
+                        }
+                    });
                 e.path[2].style.borderColor = "#7FF835";
                 }  
               },
@@ -65,7 +85,6 @@ Vue.component('donut',{
                },
 
               deleteDonut(e){
-                console.log(e.target.parentElement.parentElement);
                 let currentDonut = e.target.parentElement.parentElement;
                 e.target.parentElement.parentElement.classList.add("removed");
                 var donutId = e.target.getAttribute('data-id');
@@ -106,15 +125,14 @@ var app = new Vue({
                     "Content-Type": "application/json"
                 }
             }).then(response => {
-              console.log(response);
                 return response.json();
             })
             .then(json => {
               for( let i = 0; i < json.data.donut.length ; i++){
-                console.log(json.data.donut[i].donutPreview);
               that.donuts.push(json.data.donut[i]);
               }
             });
         },
-      }
+      },
+
   });
