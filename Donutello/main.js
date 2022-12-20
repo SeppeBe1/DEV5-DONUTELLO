@@ -11,10 +11,15 @@ fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
 .then(json => {
   for(let i = 0; i < json.data.donut.length ; i++ ){
     let datum = new Date(json.data.donut[i].datum);
+    console.log(json.data.donut[i]);
 
     let donut = `
                   <div class="infoDonut" data-id="${json.data.donut[i]._id}">
+<<<<<<< HEAD
                     <img class="infoImg" src="${json.data.donut[i].logo}" alt="donut">
+=======
+                    <img class="infoImg" src="${json.data.donut[i].donutPreview}" alt="donut">
+>>>>>>> main
                     <p>Bedrijf: <span>${json.data.donut[i].bedrijfsnaam}</span></p>
                     <p>postcode: <span>${json.data.donut[i].postcode}</span></p>
                     <p>Datum: <span>${datum.toLocaleDateString()}</span></p>
