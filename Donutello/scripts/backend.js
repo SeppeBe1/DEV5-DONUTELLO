@@ -36,8 +36,25 @@ Vue.component('donut',{
               changeButton(e){
                 this.showBtn = !this.showBtn;
                 if( this.showBtn === false){
+                //   fetch ("https://donuttelloapi.onrender.com/api/v1/donuts", {
+                //     method: "GET",
+                //     headers: {
+                //         "Content-Type": "application/json"
+                //     }
+                // }).then(response => {
+                //   console.log(response);
+                //     return response.json();
+                // })
+                // .then(json => {
+                //   for( let i = 0; i < json.data.donut.length ; i++){
+                //     console.log(json.data.donut[i].donutPreview);
+                //   that.donuts.push(json.data.donut[i]);
+                //   }
+                // });
+                console.log(e.target.innerHTML);
                   e.path[2].style.borderColor = "#FB9144";
                 } else if(this.showBtn === true){
+                  console.log(e.target.innerHTML);
                 e.path[2].style.borderColor = "#7FF835";
                 }  
               },
@@ -57,7 +74,6 @@ Vue.component('donut',{
                 currentDonut.addEventListener("transitionend",() => {
                   currentDonut.remove();
               })
-              
                 fetch (`https://donuttelloapi.onrender.com/api/v1/donuts/${donutId}`, {
                       method: "DELETE",
                       headers: {
